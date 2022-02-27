@@ -1,0 +1,96 @@
+one 
+------------------------------------------------------
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner kb=new Scanner(System.in);
+		String a=kb.next();
+		String b=kb.next();
+		String x;
+		System.out.println(zh1(a,b)+"  "+zh(a,b));
+	}
+	 static String zh(String a,String b) {
+		String temp=a;
+		a=b;
+		b=temp;
+		return b;
+	}
+	 static String zh1(String a,String b) {
+			String temp=a;
+			a=b;
+			b=temp;
+			return a;
+		}
+
+}
+
+------------------------------------------------------
+
+two
+------------------------------------------------------
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner kb=new Scanner(System.in);
+		String c=kb.next();
+		String b=kb.next();	
+		String[] a={c,b};
+		swapInArry(a);
+		System.out.println(a[0]+"  "+a[1]);
+	}
+	private  static void swapInArry(String[] a) {
+		Object temp = a[0];
+		a[0]=a[1];
+		a[1]=(String) temp;
+	}
+}
+------------------------------------------------------
+
+three
+------------------------------------------------------
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner kb=new Scanner(System.in);
+		Object a=kb.next();
+		Object b=kb.next();	
+
+		Main x=new Main();
+		
+		x.swap(a,b);
+		
+	}
+
+	
+	public static void swap(Object a,Object b) {
+		Object temp=a;
+		a=b;
+		b=temp;
+		System.out.println(a+"  "+b);
+	}
+		
+
+}
+
+
+输入
+两个数
+提示：用next()方法输入泛型数据
+
+输出
+置换后的两个数
+
+样例输入 
+111  222
+
+样例输出 
+222  111
