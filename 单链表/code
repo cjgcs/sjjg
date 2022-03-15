@@ -1,15 +1,40 @@
+
+
 import java.util.Scanner;
 
+public class Main {
+	public static void main(String[] args) throws Exception {
+		Scanner cj=new Scanner(System.in);
+		LinkList M=new LinkList();
+		M.create1(0);
+		M.display();
+		int a=cj.nextInt();
+		Object x=cj.next();
+		M.insert(a, x);
+		M.display();
+		int b=cj.nextInt();
+		M.remove(b);
+		M.display();
+		int c=cj.nextInt();
+		System.out.println(M.get(c));
+	}
+}
 interface IList {
-	public void clear(); 
+	public void clear(); // 将一个已经存在的线性表置成空表
 
-	public boolean isEmpty(); 
-	public int length(); 
-	public Object get(int i) throws Exception;
-	public void insert(int i, Object x) throws Exception;
-	public void remove(int i) throws Exception;
-	public int indexOf(Object x);
-	public void display();
+	public boolean isEmpty(); // 判断当前线性表中的数据元素个数是否为0,若为0则函数返回true，否则返回false
+
+	public int length(); // 求线性表中的数据元素个数并由函数返回其值
+
+	public Object get(int i) throws Exception;// 读取到线性表中的第i个数据元素并由函数返回其值。其中i取值范围为：0≤i≤length()-1,如果i值不在此范围则抛出异常
+
+	public void insert(int i, Object x) throws Exception;// 在线性表的第i个数据元素之前插入一个值为x的数据元素。其中i取值范围为：0≤i≤length()。如果i值不在此范围则抛出异常,当i=0时表示在表头插入一个数据元素x,当i=length()时表示在表尾插入一个数据元素x
+
+	public void remove(int i) throws Exception;// 将线性表中第i个数据元素删除。其中i取值范围为：0≤i≤length()- 1,如果i值不在此范围则抛出异常
+
+	public int indexOf(Object x);// 返回线性表中首次出现指定元素的索引，如果列表不包含此元素，则返回 -1
+	
+	public void display();// 输出线性表中的数据元素
 }
 class Node {
 	public Object data; 
@@ -36,7 +61,9 @@ class Node {
 	}public void setNext(Node next) {
 		this.next=next;
 	}
-	class LinkList implements IList {
+}
+	
+class LinkList implements IList {
 		public Node head;// 单链表的头指针
 
 		// 单链表的构造函数
@@ -158,25 +185,5 @@ class Node {
 			}
 		}
 }
-}
-public class Main {
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		Scanner sc=new Scanner(System.in);
-		LinkList L=new LinkList();
-		L.create1(0);
-		L.display();
-		int i=sc.nextInt();
-		Object x=sc.next();
-		L.insert(i, x);
-		L.display();
-		i=sc.nextInt();
-		L.remove(i);
-		L.display();
-		i=sc.nextInt();
-		Object o=L.get(i);
-		System.out.println(o);
 
-	}
 
-}
