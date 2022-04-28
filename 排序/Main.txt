@@ -1,0 +1,131 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+
+        int len = 8;
+        int[] arr = new int[len];
+
+        for (int i = 0; i < len; i++) {
+            int val = kb.nextInt();
+            arr[i] = val;
+        }
+
+        insertSort(arr); // 题目一
+        // bubbleSort(arr); // 题目二
+        // Partition(arr, 0, arr.length - 1); // 题目三
+
+    }
+
+    public static void display(int[] arr) {
+        String res = "";
+        for (int i = 0; i < arr.length; i++)
+            res += arr[i] + " ";
+
+        System.out.println(res);
+    }
+
+    // 递归快速排序
+    public static void quickSort(int[] arr, int left, int right) {
+        if (left >= right)
+            return;
+
+        int i = left;
+        int j = right;
+        int base = arr[left];
+
+        while (i < j) {
+            while (i < j && arr[j] >= base)
+                j--;
+            while (i < j && arr[i] <= base)
+                i++;
+
+            if (i < j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        arr[left] = arr[i];
+        arr[i] = base;
+
+        quickSort(arr, left, i - 1);
+        quickSort(arr, i + 1, right);
+    }
+
+    // 一趟快速排序
+    public static void Partition(int[] arr, int i, int j) {
+        int point = arr[i];
+        while (i < j) {
+            while (i < j && arr[j] >= point) {
+                j--;
+            }
+            if (i < j) {
+                arr[i] = arr[j];
+                i++;
+            }
+            while (i < j && arr[i] <= point) {
+                i++;
+            }
+            if (i < j) {
+                arr[j] = arr[i];
+                j--;
+            }
+        }
+        arr[i] = point;
+
+        // 打印函数
+        display(arr);
+    }
+
+    // 插入排序
+    public static void insertSort(int[] arr) {
+        if (arr.length <= 1)
+            return;
+
+        for (int i = 1; i < arr.length; i++) {
+            // 打印函数
+            display(arr);
+
+            int value = arr[i];
+            int j = i - 1;
+            for (; j >= 0; j--) {
+                if (arr[j] > value) {
+                    arr[j + 1] = arr[j];
+                } else {
+                    break;
+                }
+            }
+            arr[j + 1] = value;
+        }
+
+        // 打印函数
+        display(arr);
+    }
+
+    // 冒泡排序
+    public static void bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            // 打印结果
+            display(arr);
+
+            Boolean flag = false;
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    flag = true;
+                }
+            }
+            if (!flag)
+                break;
+        }
+
+        // 打印结果
+        display(arr);
+    }
+
+}
